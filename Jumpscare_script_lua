@@ -1,0 +1,38 @@
+local scareDistance = 10   
+local scareTime = 3  
+
+
+function updateJumpscare()
+ 
+    local object = g_EntityThis  
+    local player = g_Player 
+
+    local distance = GetDistance(object, player)
+    
+    if distance <= scareDistance then
+     
+        if g_EntityVisible(object) == 0 then
+            SetEntityVisible(object, 1)
+            SetEntityCollidable(object, 1)
+        end
+
+       
+        local timer = g_Time + scareTime
+        while g_Time < timer do
+           
+        end
+        
+   
+        SetEntityVisible(object, 0)
+        SetEntityCollidable(object, 0)
+    else
+     
+        SetEntityVisible(object, 0)
+        SetEntityCollidable(object, 0)
+    end
+end
+
+
+function main()
+    updateJumpscare()
+end
