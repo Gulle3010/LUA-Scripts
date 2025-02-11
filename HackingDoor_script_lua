@@ -1,0 +1,39 @@
+local isHacking = false
+local timeHoldingE = 0
+local hackTime = 10
+
+function main()
+    local player = GetPlayer()
+
+    if isPlayerInZone(player) then
+        if GetKeyState(69) == 1 then
+            if not isHacking then
+                isHacking = true
+                timeHoldingE = 0
+            end
+
+            if isHacking then
+                timeHoldingE = timeHoldingE + (1 / 60)
+
+                if timeHoldingE >= hackTime then
+                    hackDoor()
+                end
+            end
+        else
+            isHacking = false
+            timeHoldingE = 0
+        end
+    else
+        isHacking = false
+        timeHoldingE = 0
+    end
+end
+
+function isPlayerInZone(player)
+    local playerX, playerY, playerZ = GetEntityPosition(player)
+    local zoneX, zoneY, zoneZ = GetEntityPosition(EntityID)
+
+    if (math.abs(playerX - zoneX) < 5 and math.abs(playerZ - zoneZ) < 5) then
+        return true
+    else
+        return false
