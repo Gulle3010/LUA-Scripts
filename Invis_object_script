@@ -1,0 +1,13 @@
+function script_init()
+   
+    local objectID = g_Entity["ID"]
+    
+    
+    if g_Entity[objectID]["static"] == 1 then
+        
+        HideObject(objectID)
+    end
+end
+
+
+script_init()
