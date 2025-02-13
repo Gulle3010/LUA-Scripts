@@ -1,4 +1,10 @@
 # LUA-Scripts
 Lua Script Collection
 
-This script is made as part of a project for game developers utilizing GameGuru and looks for more advanced games.
+These scripts are made as part of projects for game developers utilizing LUA and looks to advance their games.
+
+
+
+
+
+-- Arcadia
