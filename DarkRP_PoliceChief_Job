@@ -1,0 +1,36 @@
+--[[
+    Police_Chief Job
+    Generated using: DarkRP | Job Generator
+    https://yourdevtools.com/gmod/darkrp-job
+--]]
+
+TEAM_GOVERMENT = DarkRP.createJob("Police_Chief", {
+    color = Color(0, 0, 0),
+    model = models/player/combine_soldier_prisonguard.mdl,
+    description = [[
+        You are a police chief who runs the local police and help enforce the law
+    ]],
+    weapons = {
+        "weapon_m4a4"
+    },
+    command = "Polchief",
+    max = 10,
+    salary = 40,
+    admin = 0,
+    vote = true,
+    hasLicense = true,
+    category = "Goverment",
+    canDemote = true,
+    chief = true,
+    PlayerSpawn = function(ply)
+        ply:SetHealth(100)
+        ply:SetMaxHealth(100)
+        ply:SetArmor(150)
+        ply:SetMaxArmor(150)
+    end,
+    customCheck = function(ply) 
+        return CLIENT or table.HasValue({TEAM_CITIZEN}, ply:Team()) 
+    end,
+    CustomCheckFailMsg = "This job is donator only!",
+    NeedToChangeFrom = TEAM_POLICE,
+})
